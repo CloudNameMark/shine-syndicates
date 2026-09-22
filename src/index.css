@@ -9,148 +9,361 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0b0b;
   color: white;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-header {
-  position: fixed;
-  top: 0;
+.navbar {
   width: 100%;
-  z-index: 1000;
-  background: rgba(5, 5, 5, 0.9);
-  padding: 20px 7%;
-}
-
-nav {
+  height: 80px;
+  padding: 0 6%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background: rgba(11, 11, 11, 0.96);
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
-nav h2 {
+/* LOGO */
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
   letter-spacing: 2px;
 }
 
-nav div {
+.logo span {
+  font-weight: 900;
+}
+
+/* NAVIGATION */
+
+.nav-links {
   display: flex;
-  gap: 30px;
-}
-
-nav a {
-  transition: 0.3s;
-}
-
-nav a:hover {
-  opacity: 0.6;
-}
-
-section {
-  min-height: 100vh;
-  padding: 120px 7%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#home {
-  text-align: center;
   align-items: center;
+  gap: 35px;
 }
 
-#home h1 {
-  font-size: clamp(50px, 9vw, 110px);
-  line-height: 0.95;
-  letter-spacing: 4px;
+.nav-links a {
+  color: #d6d6d6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-#home p {
-  margin-top: 30px;
-  font-size: 20px;
-  max-width: 600px;
+.nav-links a:hover {
+  color: white;
 }
 
-button {
-  margin-top: 30px;
-  padding: 15px 35px;
+/* BOOK BUTTON */
+
+.book-button {
+  background: white;
+  color: #0b0b0b;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.book-button:hover {
+  background: #dcdcdc;
+  transform: translateY(-2px);
+}
+
+/* MOBILE BOOK BUTTON */
+
+.mobile-book-button {
+  display: none;
+}
+
+/* HAMBURGER */
+
+.menu-button {
+  display: none;
+  width: 32px;
+  height: 26px;
+  padding: 0;
   border: none;
-  border-radius: 30px;
+  background: transparent;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#services {
-  background: #101010;
+.menu-button span {
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
-#services h2,
-#about h2,
-#contact h2 {
-  font-size: 45px;
-  margin-bottom: 40px;
+/* HAMBURGER → X */
+
+.menu-button.active span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
 }
 
-#services > div {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+.menu-button.active span:nth-child(2) {
+  opacity: 0;
 }
 
-#services > div > div {
-  padding: 30px;
-  background: #181818;
-  border-radius: 15px;
+.menu-button.active span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
 }
 
-#services h3 {
-  font-size: 25px;
-  margin-bottom: 15px;
-}
+/* HERO PLACEHOLDER */
 
-#services p,
-#about p,
-#contact p {
-  line-height: 1.7;
-}
+/* HERO */
 
-#about {
-  max-width: 1000px;
-}
-
-#about p {
-  max-width: 700px;
-  font-size: 20px;
-}
-
-#contact {
-  text-align: center;
+.hero {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  display: flex;
   align-items: center;
-  background: #101010;
+  padding: 80px 8%;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.72) 42%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    url('/Porsche 911 4K wallpaper for pc.jpg');
+
+  background-size: cover;
+  background-position: center;
 }
 
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #050505;
+.hero-content {
+  max-width: 700px;
 }
+
+.hero-label {
+  color: #bdbdbd;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin-bottom: 30px;
+}
+
+.hero h1 span {
+  color: #bdbdbd;
+}
+
+.hero-description {
+  max-width: 500px;
+  color: #d0d0d0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 15px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.hero-button.primary {
+  background: white;
+  color: #0b0b0b;
+}
+
+.hero-button.primary:hover {
+  background: #dcdcdc;
+  transform: translateY(-2px);
+}
+
+.hero-button.secondary {
+  color: white;
+  border: 1px solid #666;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-button.secondary:hover {
+  background: white;
+  color: #0b0b0b;
+  border-color: white;
+}
+
+/* CURVED HERO LAYOUT */
+
+.hero-label {
+  transform: translateX(80px);
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #ffffff, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  transform: translateX(80px);
+}
+
+.hero-buttons {
+  transform: translateX(115px);
+}
+
+/* MOBILE */
 
 @media (max-width: 768px) {
-  nav div {
+
+  .navbar {
+    height: 70px;
+    padding: 0 5%;
+  }
+
+  .logo {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+
+  .book-button {
     display: none;
   }
 
-  #services > div {
-    grid-template-columns: 1fr;
+  .menu-button {
+    display: flex;
   }
 
-  #home h1 {
-    font-size: 55px;
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: #0b0b0b;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
   }
+
+  .nav-links.active {
+    max-height: 400px;
+    border-bottom: 1px solid #222;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .nav-links a:hover {
+    background: #151515;
+  }
+
+  .mobile-book-button {
+    display: block !important;
+    background: white;
+    color: #0b0b0b !important;
+    width: 85% !important;
+    margin: 10px auto 20px;
+    border-radius: 6px;
+    font-weight: 700 !important;
+  }
+
+    .hero {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 80px 8%;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.72) 42%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    url('/Porsche 911 4K wallpaper for pc.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+  }
+
+  .hero h1 {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #ffffff, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-button {
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+  .hero-label,
+  .hero h1,
+  .hero-description,
+  .hero-buttons {
+    transform: none;
+  }
+}
+
 }
