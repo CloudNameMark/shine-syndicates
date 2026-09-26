@@ -8,12 +8,62 @@ import {
   faCarSide,
   faPhone,
   faChevronDown,
-  faStar
+  faStar,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
+const testimonials = [
+  {
+    name: "Jane Doe",
+    review:
+      "Absolutely amazing service. My car came back looking spotless and the attention to detail was incredible. I will definitely be coming back again.",
+  },
+  {
+    name: "John Doe",
+    review:
+      "Great experience from start to finish. The team was professional, friendly and the car looked better than I expected when I collected it.",
+  },
+  {
+    name: "Mark Tovela",
+    review:
+      "Really impressed with the quality of the detailing. Everything was cleaned properly and the finish made the car look almost brand new again.",
+  },
+  {
+    name: "Raul Tovela",
+    review:
+      "Excellent service and attention to detail. The whole experience was smooth and professional, and I would happily recommend Shine Syndicates.",
+  },
+  {
+    name: "Mario Antonio",
+    review:
+      "The service was fantastic and the results speak for themselves. My car looked incredibly clean and polished after the detail was completed.",
+  },
+];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <>
@@ -131,7 +181,7 @@ function App() {
 
   <div className="price-grid">
 
-   <div className="price-card">
+   <div className="price-card reveal">
   <div className="price-image">
     <img src="/public/Car Detailing vs Car Wash_ Which One Does Your Car Really Need_ - Pro-Detailing.jpg" alt="Quick Services" />
     <div className="price-overlay"></div>
@@ -146,7 +196,7 @@ function App() {
   </div>
 </div>
 
-<div className="price-card">
+<div className="price-card reveal">
   <div className="price-image">
     <img src="/public/Transportation Stock Photos _ Download 7K+ Royalty-Free Images.jpg" alt="Detailing Packages" />
     <div className="price-overlay"></div>
@@ -162,7 +212,7 @@ function App() {
   </div>
 </div>
 
-<div className="price-card">
+<div className="price-card reveal">
   <div className="price-image">
     <img src="/public/5 Big Mistakes To Avoid When Cleaning Your Car.jpg" alt="Valet Packages" />
     <div className="price-overlay"></div>
@@ -177,7 +227,7 @@ function App() {
   </div>
 </div>
 
-<div className="price-card featured">
+<div className="price-card featured reveal">
   <div className="price-image">
     <img src="/public/Download Free Vectors, Images, Photos & Videos _ Vecteezy.jpg" alt="Add-Ons" />
     <div className="price-overlay"></div>
@@ -196,7 +246,7 @@ function App() {
   </div>
 </div>
 
-<div className="price-card membership">
+<div className="price-card membership reveal">
   <div className="price-image">
     <img src="/public/download.jpg" alt="Membership" />
     <div className="price-overlay"></div>
@@ -221,7 +271,45 @@ function App() {
     <div className="yoco">YOCO Accepted</div>
   </div>
 
+<section className="testimonials reveal">
+  <div className="testimonials-header">
+    <span className="section-label">CUSTOMER REVIEWS</span>
+    <h2>What Our Customers Say</h2>
+    <p>Real results. Real experiences.</p>
+  </div>
+
+  <div className="testimonial-track">
+    {[...testimonials, ...testimonials].map((testimonial, index) => (
+      <div className="testimonial-card" key={index}>
+        <div className="testimonial-user">
+          <div className="testimonial-avatar">
+            <FontAwesomeIcon icon={faUser} />
+          </div>
+
+          <div>
+            <h3>{testimonial.name}</h3>
+          </div>
+        </div>
+
+        <p className="testimonial-review">
+          {testimonial.review}
+        </p>
+
+        <div className="testimonial-stars">
+          {[...Array(5)].map((_, starIndex) => (
+            <FontAwesomeIcon
+              key={starIndex}
+              icon={faStar}
+            />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
 </section>
+
+</section>
+
 
       </main>
 

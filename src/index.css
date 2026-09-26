@@ -486,6 +486,28 @@ body {
   margin-bottom: 18px;
 }
 
+/* Scroll reveal animation */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.price-card:nth-child(1) { transition-delay: .05s; }
+.price-card:nth-child(2) { transition-delay: .12s; }
+.price-card:nth-child(3) { transition-delay: .19s; }
+.price-card:nth-child(4) { transition-delay: .26s; }
+.price-card:nth-child(5) { transition-delay: .33s; }
+
 @media (max-width:768px){
 
   .trust-bar{
@@ -504,6 +526,249 @@ body {
     flex-direction:column;
     gap:18px;
     text-align:center;
+  }
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonials {
+  padding: 100px 0;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.testimonials-header .section-label {
+  color: #e11d2e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.testimonials-header h2 {
+  margin: 12px 0 10px;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #e5e5e5,
+    #e11d2e
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonials-header p {
+  color: rgba(255,255,255,.55);
+  font-size: 15px;
+}
+
+
+/* =========================
+   HORIZONTAL TRACK
+========================= */
+
+.testimonial-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+
+  animation: testimonialScroll 35s linear infinite;
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+
+/* =========================
+   TESTIMONIAL CARD
+========================= */
+
+.testimonial-card {
+  width: 360px;
+  min-height: 230px;
+
+  padding: 28px;
+
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.08);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(10px);
+
+  flex-shrink: 0;
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(225,29,46,.45);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+}
+
+
+/* =========================
+   USER
+========================= */
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.testimonial-avatar {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.08);
+
+  color: rgba(255,255,255,.7);
+
+  font-size: 18px;
+}
+
+.testimonial-user h3 {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================
+   TESTIMONIAL EDGE FADE
+========================= */
+
+.testimonial-track {
+  position: relative;
+}
+
+/* Fade on both sides */
+.testimonials {
+  position: relative;
+}
+
+.testimonials::before,
+.testimonials::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.testimonials::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #0b0b0b 0%,
+    rgba(11, 11, 11, 0.85) 25%,
+    rgba(11, 11, 11, 0.45) 60%,
+    rgba(11, 11, 11, 0) 100%
+  );
+}
+
+.testimonials::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #0b0b0b 0%,
+    rgba(11, 11, 11, 0.85) 25%,
+    rgba(11, 11, 11, 0.45) 60%,
+    rgba(11, 11, 11, 0) 100%
+  );
+}
+
+.testimonial-track::before,
+.testimonial-track::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 4;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.testimonial-track::before {
+  left: 0;
+}
+
+.testimonial-track::after {
+  right: 0;
+}
+
+/* =========================
+   REVIEW
+========================= */
+
+.testimonial-review {
+  color: rgba(255,255,255,.68);
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  margin: 0;
+
+  min-height: 72px;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.testimonial-stars {
+  display: flex;
+  gap: 5px;
+
+  margin-top: 22px;
+
+  color: #e11d2e;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+@keyframes testimonialScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 12px));
   }
 }
 
